@@ -47,46 +47,13 @@
 set(REG_DIR_DESCRIPTION "directory containing RealityGridConfig.cmake.  This is either the root of the build tree, or PREFIX/lib/RealityGrid for an installation.")
 set(REG_DIR_MESSAGE "RealityGrid not found.  Set the RealityGrid_DIR cmake cache entry to the ${REG_DIR_DESCRIPTION}")
 
-
 #---------------------------------------------------------
-
 # Search only if the location is not already known.
 if(NOT RealityGrid_DIR)
-  # Get the system search path as a list.
-  if(UNIX)
-    string(REGEX MATCHALL "[^:]+" REG_DIR_SEARCH1 "$ENV{PATH}")
-  else(UNIX)
-    string(REGEX REPLACE "\\\\" "/" REG_DIR_SEARCH1 "$ENV{PATH}")
-  endif(UNIX)
-  string(REGEX REPLACE "/;" ";" REG_DIR_SEARCH2 "${REG_DIR_SEARCH1}")
-
-  # Construct a set of paths relative to the system search path.
-  set(REG_DIR_SEARCH "")
-  foreach(dir ${REG_DIR_SEARCH2})
-    set(REG_DIR_SEARCH ${REG_DIR_SEARCH}
-      ${dir}/../lib/RealityGrid
-    )
-  endforeach(dir)
-
   find_path(RealityGrid_DIR UseRealityGrid.cmake
-    # look for expected environment having been set
-    $ENV{REG_STEER_HOME}/lib/RealityGrid
-    $ENV{REG_STEER_HOME}/lib
-    $ENV{REG_STEER_HOME}
-    $ENV{REG_HOME}/lib/RealityGrid
-    $ENV{REG_HOME}/lib
-    $ENV{REG_HOME}
-
-    # relative to the executable path
-    ${REG_DIR_SEARCH}
-
-    # standard unix locations
-    /usr/local/lib/RealityGrid
-    /usr/local/lib
-    /usr/lib/RealityGrid
-    /usr/lib
-
-    # give the user some clues if we can't find it
+    HINTS $ENV{STEER_LIB_ROOT} ${STEER_LIB_ROOT} $ENV{REG_STEER_HOME} $ENV{REG_HOME}}
+    PATH_SUFFIXES lib/RealityGrid lib
+    PATHS /usr /usr/local
     DOC "The ${REG_DIR_DESCRIPTION}"
   )
 endif(NOT RealityGrid_DIR)
