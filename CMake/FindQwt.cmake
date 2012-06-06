@@ -62,6 +62,7 @@ if(QT4_FOUND)
     /usr/include/qwt-qt4
     /usr/include/qwt
     /usr/include
+    /opt/local/include/qwt
   )
 
   set(QWT_NAMES ${QWT_NAMES} qwt-qt4 qwt libqwt-qt4 libqwt)
