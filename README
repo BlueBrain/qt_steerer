@@ -28,7 +28,7 @@ Qt and Qwt
 The Steerer requires Qt version 4 and Qwt version 5 build against
 Qt4. Most modern Linux distributions include both of these packages as
 standard but they can be downloaded and built by hand if necessary. Use
-'sudo port install qwt-devel +universal' on Mac OS X.
+'sudo port install qwt +universal' on Mac OS X.
 
 See http://qt.nokia.com and http://qwt.sourceforge.net for
 information.
