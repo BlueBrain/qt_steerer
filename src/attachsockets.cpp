@@ -49,6 +49,8 @@
     @author Robert Haines */
 
 #include <QtGui>
+#include <lunchbox/servus.h>
+#include <boost/foreach.hpp>
 
 #include "buildconfig.h"
 #include "attachsockets.h"
@@ -81,6 +83,20 @@ AttachSockets::AttachSockets(QWidget* parent, bool modal)
 
   setLayout(lMainLayout);
   setWindowTitle(tr("Attach to host:"));
+
+  lunchbox::Servus service( "_collage._tcp" );
+  const lunchbox::Strings& instances =
+                            service.discover( lunchbox::Servus::IF_LOCAL, 500 );
+  BOOST_FOREACH( const std::string& instance, instances )
+  {
+      const std::string& hostname( service.get( instance, "monsteer_host" ));
+      const std::string& port( service.get( instance, "monsteer_port" ));
+      if( hostname.empty() || port.empty( ))
+          continue;
+
+      mInputs[0]->setText( QString::fromStdString( hostname ));
+      mInputs[1]->setText( QString::fromStdString( port ));
+  }
 }
 
 AttachSockets::~AttachSockets() {
