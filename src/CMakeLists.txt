@@ -128,6 +128,7 @@ target_link_libraries(${EXE_NAME}
   ${QT_LIBRARIES}
   ${REG_EXTERNAL_LIBS}
   ${LUNCHBOX_LIBRARIES}
+  ${X11_LIBRARIES}
 )
 
 # install

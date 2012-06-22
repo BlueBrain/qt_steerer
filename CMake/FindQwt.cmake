@@ -61,6 +61,7 @@ if(QT4_FOUND)
     /usr/local/include
     /usr/include/qwt-qt4
     /usr/include/qwt
+    /usr/include/qwt5
     /usr/include
     /opt/local/include/qwt
   )

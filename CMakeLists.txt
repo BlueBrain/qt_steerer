@@ -102,6 +102,8 @@ find_package(Lunchbox 1.3.5 REQUIRED)
 link_directories(${LUNCHBOX_LIBRARY_DIRS})
 include_directories(${LUNCHBOX_INCLUDE_DIRS})
 
+find_package(X11)
+
 #
 # options
 #
