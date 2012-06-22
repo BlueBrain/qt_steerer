@@ -86,7 +86,7 @@ AttachSockets::AttachSockets(QWidget* parent, bool modal)
 
   lunchbox::Servus service( "_collage._tcp" );
   const lunchbox::Strings& instances =
-                            service.discover( lunchbox::Servus::IF_LOCAL, 500 );
+                              service.discover( lunchbox::Servus::IF_ALL, 500 );
   BOOST_FOREACH( const std::string& instance, instances )
   {
       const std::string& hostname( service.get( instance, "monsteer_host" ));
@@ -96,6 +96,7 @@ AttachSockets::AttachSockets(QWidget* parent, bool modal)
 
       mInputs[0]->setText( QString::fromStdString( hostname ));
       mInputs[1]->setText( QString::fromStdString( port ));
+      break;
   }
 }
 
