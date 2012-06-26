@@ -80,8 +80,8 @@ ConfigForm::ConfigForm(int aCurrentIntervalValue, QWidget *parent,
   : QDialog( parent, name, modal, f ),
     mApplyButton(kNULL), mCancelButton(kNULL)
 {
-  mMinVal_Sec = 0.05f;
-  mMaxVal_Sec = 2.0f;
+  mMinVal_Sec = float(kMIN_POLLING_INT) / 1000.f;
+  mMaxVal_Sec = float(kMAX_POLLING_INT) / 1000.f;
 
   REG_DBGMSG1("ARPDBG: min val = ", mMinVal_Sec);
   REG_DBGMSG1("ARPDBG: max val = ", mMaxVal_Sec);

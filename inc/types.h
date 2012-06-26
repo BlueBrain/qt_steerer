@@ -98,7 +98,7 @@
 /// minimum polling interval (milliseconds) from commsthread
 /// Get_next_message - a SOAP call takes ~0.015 seconds at best
 /// so no point polling more frequently than that
-#define kMIN_POLLING_INT	100
+#define kMIN_POLLING_INT	1
 #define kMAX_POLLING_INT        2000
 
 /// Unique numbers to make QCustomEvent IDs for postEvent

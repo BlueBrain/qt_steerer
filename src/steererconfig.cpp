@@ -61,6 +61,7 @@
 #include "buildconfig.h"
 #include "debug.h"
 #include "steererconfig.h"
+#include "types.h"
 
 using namespace std;
 
@@ -69,7 +70,7 @@ SteererConfig::SteererConfig(){
   mTopLevelRegistry = "";
   mKeyPassphrase = "";
   mAutoPollingOn = true;
-  mPollingIntervalSecs = 0.1f;
+  mPollingIntervalSecs = float(kMIN_POLLING_INT) / 1000.f;
   mShowMonParamTable = true;
   mShowSteerParamTable = true;
   mShowIOTypeTable = true;

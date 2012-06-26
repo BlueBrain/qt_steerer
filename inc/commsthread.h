@@ -62,7 +62,7 @@ class SteererMainWindow;
 class CommsThread : public QThread
 {
 public:
-    CommsThread(SteererMainWindow *, QMutex *, int aCheckInterval=100);
+    CommsThread(SteererMainWindow *, QMutex *, int aCheckInterval=kMIN_POLLING_INT);
     ~CommsThread();
 
     void setCheckInterval(const int aInterval);
