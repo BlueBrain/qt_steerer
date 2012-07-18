@@ -57,19 +57,17 @@ set(QWT_FOUND NO)
 
 if(QT4_FOUND)
   find_path(QWT_INCLUDE_DIR qwt.h
-    /usr/local/qwt/include
-    /usr/local/include
-    /usr/include/qwt-qt4
-    /usr/include/qwt
-    /usr/include/qwt5
-    /usr/include
-    /opt/local/include/qwt
+    PATHS /usr/local/qwt /usr/local /usr/include/qwt-qt4 /usr/include/qwt
+          /usr/include/qwt5 /usr /opt/local/include/qwt
+    HINTS $ENV{QWT_ROOT} ${QWT_ROOT}
+    PATH_SUFFIXES include
   )
 
-  set(QWT_NAMES ${QWT_NAMES} qwt-qt4 qwt libqwt-qt4 libqwt)
+  set(QWT_NAMES ${QWT_NAMES} qwt-qt4 qwt5 qwt libqwt-qt4 libqwt)
   find_library(QWT_LIBRARY
     NAMES ${QWT_NAMES}
-    PATHS /usr/local/qwt/lib /usr/local/lib /usr/lib
+    PATHS /usr/local/qwt /usr/local /usr $ENV{QWT_ROOT} ${QWT_ROOT}
+    PATH_SUFFIXES lib
   )
 
   if(QWT_LIBRARY)
