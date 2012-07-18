@@ -102,6 +102,10 @@ find_package(Lunchbox 1.3.5 REQUIRED)
 link_directories(${LUNCHBOX_LIBRARY_DIRS})
 include_directories(${LUNCHBOX_INCLUDE_DIRS})
 
+find_package(Boost 1.41 REQUIRED)
+link_directories(${Boost_LIBRARY_DIRS})
+include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+
 find_package(X11)
 
 #
